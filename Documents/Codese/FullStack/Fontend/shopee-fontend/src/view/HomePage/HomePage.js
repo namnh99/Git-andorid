@@ -58,14 +58,22 @@ class HomePage extends React.Component {
       </CardActions>
       <Divider></Divider>
       <CardActions>
-    <Button variant="contained" color="inherit" onClick={this.renderData}>Chi tiet </Button>
+    <Button variant="contained" color="inherit" onClick={()=>this.renderData()}>Chi tiet </Button>
       </CardActions>
+       <CardContent>
+          {this.state.showDescripton?
+            <Typography>
+              {product.description}
+            </Typography>
+            :null
+          }       
+      </CardContent>
     </Card>
   }
 
   renderData() {
     this.setState({
-      description: this.state.listProduct.description,
+      showDescripton: !this.state.showDescripton
     })
   }
 
