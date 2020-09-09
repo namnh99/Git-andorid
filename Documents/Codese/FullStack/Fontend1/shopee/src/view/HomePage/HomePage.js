@@ -103,9 +103,7 @@ class HomePage extends React.Component {
       <Button variant="contained" onClick={this.nextPage} color="secondary" >next</Button>
       {
         this.state.listProduct.map((product, index) => {
-          return <Card>
-            <CardContent> {this.hamRenderProduct(product, index)} </CardContent>
-          </Card>
+          {this.hamRenderProduct(product, index)}       
         })
       }
     </div>
