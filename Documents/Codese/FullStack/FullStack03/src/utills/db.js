@@ -1,13 +1,55 @@
-const mysql = require ('mysql')
+const mysql = require('mysql');
 
 const config = {
-    host:'localhost',
-    port:'3306',
-    user:'root',
-    password:'hainam2619',
-    database:'testdb'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
 }
 
-const pool = mysql.createConnection(config)
+const pool = mysql.createPool(config)
+const logMySqlQuery = (sql, params) => {
+    console.log('sql: ',
+        mysql.format(sql, params)
+            .replace(/\r?\n|\r/g, ' ') // xoá dấu xuống dòng
+            .split(' ').filter(e => e !== '').join(' ')); // loại bỏ khoảng trắng thừa kiểu như này 'SELECT     * FROM     WHERE   ' 
+}
 
-module.exports = pool
+const query = (sql, params) => {
+
+    logMySqlQuery(sql, params)
+    return new Promise((resolve, reject) => {
+        pool.query(sql, params, (err, result) => {
+            if (err) reject(err)
+            else resolve(result)
+        })
+    })
+}
+const queryOne = (sql, params) => {
+    logMySqlQuery(sql, params)
+    return new Promise((resolve, reject) => {
+        pool.query(sql, params, (err, result) => {
+            if (err) reject(err)
+            else resolve(result[0])
+        })
+    })
+}
+const queryMulti = (sql, params) => {
+    logMySqlQuery(sql, params)
+    return new Promise((resolve, reject) => {
+        pool.query(sql, params, (err, result) => {
+            if (err) reject(err)
+            else resolve(result)
+        })
+    })
+}
+
+
+const ROLES = ['admin', 'user', 'guest']
+
+
+module.exports = {
+    query, queryOne, queryMulti,
+    ROLES
+};
