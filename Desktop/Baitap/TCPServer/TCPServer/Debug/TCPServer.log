@@ -1,0 +1,5 @@
+﻿  TCPServer.cpp
+c:\users\quynh\onedrive\documents\visual studio 2015\projects\tcpserver\tcpserver\tcpserver.cpp(5): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+  c:\users\quynh\onedrive\documents\visual studio 2015\projects\tcpserver\tcpserver\tcpserver.cpp(5): note: command-line arguments:  see previous definition of '_CRT_SECURE_NO_WARNINGS'
+  TCPServer.vcxproj -> C:\Users\quynh\OneDrive\Documents\Visual Studio 2015\Projects\TCPServer\Debug\TCPServer.exe
+  TCPServer.vcxproj -> C:\Users\quynh\OneDrive\Documents\Visual Studio 2015\Projects\TCPServer\Debug\TCPServer.pdb (Full PDB)
