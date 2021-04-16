@@ -30,28 +30,28 @@ public class Test1 {
         double hight = 1.75;
         double weight = 60;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhap ho va ten: ");
+        System.out.printf("Nhap ho va ten: ");
         name = sc.nextLine();
         
-        System.out.println("Nhap nam sinh cua ban: ");
+        System.out.printf("Nhap nam sinh cua ban: ");
         while (flag == true) {
             if (sc.hasNextInt()) {
                 date = sc.nextInt();
                 if (date < 1920) {
                     System.out.println("Ban qua gia ! ban dung lua toi, moi ban nhap lai");
                 } else if (date > 2021) {
-                    System.out.println("Ban qua tre ! ban dung loi toi, moi ban nhap lai");
+                    System.out.println("Ban qua tre ! ban dung lua toi, moi ban nhap lai");
                 } else {
                     flag = false;
                 }
             } else {
                 sc.next();
-                System.out.println("Nhap sai cu phap, moi ban nhap lai ");
+                System.out.printf("Nhap sai cu phap, moi ban nhap lai: ");
             }
         }
         old = 2021 - date;
         
-        System.out.println("Nhap gioi tinh cua ban (Nam hoac Nu)");
+        System.out.printf("Nhap gioi tinh cua ban (Nam hoac Nu): ");
         gioiTinh = sc.nextLine();
         while (true) {    
             gioiTinh = sc.nextLine();
@@ -62,22 +62,25 @@ public class Test1 {
                 gioiTinh = female[1];
                 break;
             } else {
-                System.out.println("Ban nhap sai, moi ban nhap lai (Nam hoac Nu): ");
+                System.out.printf("Ban nhap sai, moi ban nhap lai (Nam hoac Nu): ");
             } 
         }
         
-        System.out.println("Nhap chieu cao cua ban (m)");
+        System.out.printf("Nhap chieu cao cua ban (m): ");
         while(true){
             if (sc.hasNextDouble()){
                 hight = sc.nextDouble();
-                if (hight > 0 && hight < 2) break; 
+                if (hight > 0 && hight < 2) break;
+                else {
+                    System.out.printf("Khong co ai cao nhu the ca !!! moi ban nhap lai: ");
+                }
             } else {
                 sc.next();
-                System.out.println("Sai moi ban nhap lai: "); 
+                System.out.printf("Sai cu phap roi !!! moi ban nhap lai: "); 
             }
         }
         
-        System.out.println("Nhap can nang cua ban (kg)");
+        System.out.printf("Nhap can nang cua ban (kg)");
         while(true){
             if (sc.hasNextDouble()){
                 weight = sc.nextDouble();
@@ -88,7 +91,7 @@ public class Test1 {
             }
         }
         
-        double BMI = (weight)/(hight*hight);
+        double BMI = Math.round(((weight)/(hight*hight)) * 100.0) / 100.0;
         System.out.println("==============");
         System.out.println("Chuan doan cua ban");
         System.out.println(name);
